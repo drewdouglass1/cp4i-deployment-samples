@@ -19,7 +19,7 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: openshift-pipelines-operator
-  namespace: openshift-operators
+  namespace: cp4i
 spec:
   channel: ocp-4.5
   name: openshift-pipelines-operator-rh
