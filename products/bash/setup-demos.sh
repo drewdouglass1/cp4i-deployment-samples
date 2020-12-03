@@ -510,14 +510,14 @@ for EACH_ADDON in $(echo $REQUIRED_ADDONS_JSON | jq -r '. | keys[]'); do
 
   ocpPipelines)
     echo -e "$info [INFO] Installing OCP pipelines...\n"
-    if ! $SCRIPT_DIR/install-ocp-pipeline.sh; then
-      update_conditions "Failed to install OCP pipelines" "Releasing"
-      update_phase "Failed"
-      FAILED_INSTALL_ADDONS_LIST+=($EACH_ADDON)
-    else
-      echo -e "$tick [SUCCESS] Successfully installed OCP pipelines"
-      update_addon_status "$EACH_ADDON" "true" "false"
-    fi # install-ocp-pipeline.sh
+    # if ! $SCRIPT_DIR/install-ocp-pipeline.sh; then
+    #   update_conditions "Failed to install OCP pipelines" "Releasing"
+    #   update_phase "Failed"
+    #   FAILED_INSTALL_ADDONS_LIST+=($EACH_ADDON)
+    # else
+    #   echo -e "$tick [SUCCESS] Successfully installed OCP pipelines"
+    #   update_addon_status "$EACH_ADDON" "true" "false"
+    # fi # install-ocp-pipeline.sh
 
     divider && echo -e "$info [INFO] Configuring secrets and permissions related to ocp pipelines in the '$NAMESPACE' namespace\n"
     if ! $SCRIPT_DIR/configure-ocp-pipeline.sh -n "$NAMESPACE"; then
